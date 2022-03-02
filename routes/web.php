@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
+use App\Http\Livewire\Products;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +23,14 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    // Route::resource('product', ProductController::class);
+    // Route::resource('product', Products::class);
+    Route::get('product', Products::class)->name('product');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 require __DIR__.'/auth.php';
