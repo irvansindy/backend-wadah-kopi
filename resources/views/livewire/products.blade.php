@@ -1,7 +1,5 @@
 <div>
-    {{-- Care about people's approval and you will be their prisoner. --}}
     <x-slot name="header">
-        {{-- <h2 class="text-center">Tutorial CRUD Laravel dengan Jetstream Livewire</h2> --}}
         <h2 class="text-center">List Data Product</h2>
     </x-slot>
     <div class="py-12">
@@ -20,7 +18,9 @@
                 <button wire:click="create()" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 mb-4 rounded">Create Product</button>
                 <input class="form-control mb-3 rounded" type="text" wire:model="search" placeholder="Search" aria-label="search">
                 @if($isModalOpen)
-                @include('livewire.createProduct')
+                    @include('livewire.createProduct')
+                @elseif ($isModalImageOpen)
+                    @include('livewire.uploadImage')
                 @endif
                 <table class="table-fixed w-full">
                     <thead>
@@ -33,7 +33,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @dd($products); --}}
                         @foreach($products as $product)
                             <tr>
                                 <td class="border px-4 py-2">{{ $product->id }}</td>
@@ -44,6 +43,9 @@
                                     <button wire:click="edit({{ $product->id }})"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                         Edit</button>
+                                    <button wire:click="modalImage({{ $product->id }})"
+                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                        Upload</button>
                                     <button wire:click="delete({{ $product->id }})"
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                         Delete</button>
@@ -52,9 +54,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- <div class="px-4 mt-4">
+                <div class="px-4 mt-4">
                     {{$products->links()}}
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
