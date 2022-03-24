@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ProductController;
 use App\Http\Livewire\Products;
+use App\Http\Livewire\Transactions;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +25,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    // Route::resource('product', ProductController::class);
-    // Route::resource('product', Products::class);
     Route::get('product', Products::class)->name('product');
+    Route::get('transaction', Transactions::class)->name('transaction');
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

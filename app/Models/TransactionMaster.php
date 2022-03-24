@@ -19,4 +19,16 @@ class TransactionMaster extends Model
         'service_fee',
         'service_fee',
     ];
+
+    protected $hidden = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function transactionDetails()
+    {
+        return $this->hasMany(TransactionDetail::class, 'transaction_id', 'id');
+    }
 }

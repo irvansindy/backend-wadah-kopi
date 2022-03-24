@@ -20,6 +20,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->integer('quantity');
             $table->decimal('amount');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

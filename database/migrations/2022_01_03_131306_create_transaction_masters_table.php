@@ -21,6 +21,8 @@ class CreateTransactionMastersTable extends Migration
             $table->decimal('service_fee');
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
