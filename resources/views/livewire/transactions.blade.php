@@ -15,8 +15,7 @@
                         </div>
                     </div>
                 </div>
-                @endif
-                {{-- <button wire:click="create()" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 mb-4 rounded">Create Product</button> --}}
+            @endif
                 <input class="form-control mb-3 rounded" type="text" wire:model="search" placeholder="Search" aria-label="search">
                 {{-- @if($isModalOpen)
                     @include('livewire.createProduct')

@@ -18,4 +18,11 @@ class TransactionDetail extends Model
         'quantity',
         'amount',
     ];
+
+    protected $hidden = [];
+
+    public function transactionItems()
+    {
+        return $this->belongsTo(TransactionMaster::class, 'id', 'transaction_id');
+    }
 }
