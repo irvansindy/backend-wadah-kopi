@@ -122,13 +122,13 @@ class Products extends Component
             'images' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
         ]);
   
-        // $nameImage = md5($this->images . microtime()).'.'.$this->images->extension();
+        $nameImage = md5($this->images . microtime()).'.'.$this->images->extension();
 
         $dataValid['images'] = $this->images->store('images', 'public');
 
         Product::findOrFail($this->product_id)->update([  
-            'image' => $dataValid,
-            // 'image' => $nameImage,
+            // 'image' => $dataValid,
+            'image' => $nameImage,
         ]);
 
         session()->flash('message', 'The photo is successfully uploaded!');

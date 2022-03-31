@@ -21,8 +21,13 @@ class TransactionDetail extends Model
 
     protected $hidden = [];
 
-    public function transactionItems()
+    // public function transactionItems()
+    // {
+    //     return $this->belongsTo(TransactionMaster::class, 'id', 'transaction_id');
+    // }
+
+    public function products()
     {
-        return $this->belongsTo(TransactionMaster::class, 'id', 'transaction_id');
+        return $this->hasOne(Product::class, 'id', 'food_id');
     }
 }

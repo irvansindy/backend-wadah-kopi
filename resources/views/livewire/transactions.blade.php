@@ -17,11 +17,9 @@
                 </div>
             @endif
                 <input class="form-control mb-3 rounded" type="text" wire:model="search" placeholder="Search" aria-label="search">
-                {{-- @if($isModalOpen)
-                    @include('livewire.createProduct')
-                @elseif ($isModalImageOpen)
-                    @include('livewire.uploadImage')
-                @endif --}}
+                @if($isModaltransactionOpen)
+                    @include('livewire.detailTransaction')
+                @endif
                 <table class="table-fixed w-full">
                     <thead>
                         <tr class="bg-gray-100">
@@ -41,11 +39,8 @@
                                 <td class="border px-4 py-2">{{ $transaction->status}}</td>
                                 <td class="border px-4 py-2">
                                     <div class="content-center">
-                                        <button wire:click="edit({{ $transaction->id }})"
+                                        <button wire:click="detailTransaction({{ $transaction->id }})"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                            Edit</button>
-                                        <button wire:click="modalImage({{ $transaction->id }})"
-                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                             Detail</button>
                                     </div>
                                 </td>

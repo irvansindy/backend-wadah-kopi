@@ -8,7 +8,8 @@ use App\Models\TransactionDetail;
 
 class Transactions extends Component
 {
-    public $id,$search;
+    public $trans_id;
+    public $search;
     public $isModaltransactionOpen = 0;
     public $limitPerPage = 10;
     protected $queryString = ['search'=> ['except' => '']];
@@ -48,7 +49,7 @@ class Transactions extends Component
 
     public function detailTransaction($id)
     {
-        $transaction = TransactionDetail::with('transactionItems')->where('id', $id);
+        $detailTransaction = TransactionDetail::with('product')->where('transaction_id', $this->trans_id = $id)->get();
         $this->openModalTransaction();
     }
 }
