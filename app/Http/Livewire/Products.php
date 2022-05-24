@@ -56,7 +56,7 @@ class Products extends Component
     }
 
     public function closeModal()
-    {
+    {   
         $this->isModalOpen = false;
         $this->isModalImageOpen = false;
     }
